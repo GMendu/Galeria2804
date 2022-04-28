@@ -1,0 +1,52 @@
+﻿@model Galeria2804.Models.Imagem
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Imagem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="imagemName" class="control-label"></label>
+                <input asp-for="imagemName" class="form-control" />
+                <span asp-validation-for="imagemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagemTam" class="control-label"></label>
+                <input asp-for="imagemTam" class="form-control" />
+                <span asp-validation-for="imagemTam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagemType" class="control-label"></label>
+                <input asp-for="imagemType" class="form-control" />
+                <span asp-validation-for="imagemType" class="text-danger"></span>
+            </div>*@
+            <div>
+                <span>ARQUIVO DA IMAGEM</span>
+                <input type="file" name="arquivo" class="form-control" />
+            </div>
+            <div>
+                <span>DESCRIÇÃO DA IMAGEM</span>
+                <input asp-for="imagemDescricao" class="form-control" />
+                <span asp-validation-for="imagemDescricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,42 @@
+﻿@model Galeria2804.Models.Imagem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Imagem</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagemName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagemName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagemTam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagemTam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagemType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagemType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagemDescricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagemDescricao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.imagemId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

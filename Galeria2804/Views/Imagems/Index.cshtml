@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Galeria2804.Models.Imagem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>GERENCIAR ARQUIVOS</h1>
+
+<p>
+    <a asp-action="Create">Inserir Imagem</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imagem
+            </th>
+            <th>
+                Tamanho da imagem
+            </th>
+            <th>
+                Tipo do arquivo
+            </th>
+            <th>
+                Descrição do arquivo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/imgs/@item.imagemName width="100px" />
+            </td>
+            <td>
+                    @{
+                        int tamanho = (int)(item.imagemTam / 1000);
+                        string exibir = tamanho.ToString() + " kB";
+                    }
+                    @exibir
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imagemType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imagemDescricao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.imagemId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.imagemId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.imagemId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

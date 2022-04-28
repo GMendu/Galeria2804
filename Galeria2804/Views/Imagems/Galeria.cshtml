@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Galeria2804.Models.Imagem>
+@{
+    ViewData["Title"] = "Galeria";
+}
+
+<h1>Galeria</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imagem
+            </th>
+            <th>
+                Tamanho da imagem
+            </th>
+            <th>
+                Tipo do arquivo
+            </th>
+            <th>
+                Descrição do arquivo
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/imgs/@item.imagemName width="100px" />
+            </td>
+            <td>
+                    @{
+                        int tamanho = (int)(item.imagemTam / 1000);
+                        string exibir = tamanho.ToString() + " kB";
+                    }
+                    @exibir
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imagemType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imagemDescricao)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
