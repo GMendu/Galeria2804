@@ -16,3 +16,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.central{
+    width: 70vw;
+    background-color:lightgrey;
+    border-color:grey;
+    margin:auto;
+    padding:2vw;
+}
+
+.galeria-img-wrapper{
+    width: 180px;
+    height: 180px;
+    background-color:white;
+    border: solid 2px dimgrey;
+    border-radius: 10px;
+}
+
+.galeria-img{
+
+    width: 97%;
+    height: 97%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.galeria-estrutura{
+    margin: 10px 10px 10px 10px
+}

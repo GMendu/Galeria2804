@@ -6,46 +6,21 @@
 <h1>Galeria</h1>
 
 
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Imagem
-            </th>
-            <th>
-                Tamanho da imagem
-            </th>
-            <th>
-                Tipo do arquivo
-            </th>
-            <th>
-                Descrição do arquivo
-            </th>
-            
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="~/imgs/@item.imagemName width="100px" />
-            </td>
-            <td>
-                    @{
-                        int tamanho = (int)(item.imagemTam / 1000);
-                        string exibir = tamanho.ToString() + " kB";
-                    }
-                    @exibir
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagemType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagemDescricao)
-            </td>
-            
-        </tr>
-}
-    </tbody>
-</table>
+<div class="central">
+    <div class="row">
+        @foreach (var item in Model) {
+            <div class="col-2 galeria-estrutura">
+                <div>
+                    <div class="galeria-img-wrapper">
+                        <img src="~/imgs/@item.imagemName" class="galeria-img" />
+                    </div>
+                    <div>
+                        <span>
+                            @Html.DisplayFor(modelItem => item.imagemDescricao)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
