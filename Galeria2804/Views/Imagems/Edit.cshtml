@@ -12,18 +12,18 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="imagemId" />
-            <input type="hidden" asp-for="imagemTam" />
-            <input type="hidden" asp-for="imagemType" />
-            <input type="hidden" asp-for="imagemName" />
+            <input type="hidden" asp-for="arquivoId" />
+            <input type="hidden" asp-for="arquivoTam" />
+            <input type="hidden" asp-for="arquivoType" />
+            <input type="hidden" asp-for="arquivoName" />
             <div>
                 <span>Imagem armazenada</span>
-                <img src="~/imgs/@Model.imagemName" width="100%"/><br />
-                <input type="file" name="arquivo" class="form-control" value="~/imgs/@Model.imagemName" />
+                <img src="~/arq/@Model.arquivoName" width="100%"/><br />
+                <input type="file" name="arquivo" class="form-control" value="~/arq/@Model.arquivoName" />
             </div>
             <div class="form-group">
-                <input asp-for="imagemDescricao" class="form-control" />
-                <span asp-validation-for="imagemDescricao" class="text-danger"></span>
+                <input asp-for="arquivoDescricao" class="form-control" />
+                <span asp-validation-for="arquivoDescricao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

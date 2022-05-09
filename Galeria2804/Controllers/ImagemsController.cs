@@ -17,7 +17,7 @@ namespace Galeria2804.Controllers
         public string VerificaExtensao(string nomeArquivo)
         {
             string extensaoArquivo = System.IO.Path.GetExtension(nomeArquivo).ToLower();
-            string[] validacaoLista = { ".gif", ".jpeg", ".jpg", ".png" };
+            string[] validacaoLista = { ".gif", ".jpeg", ".jpg", ".png", ".mp4", ".mp3" };
 
             foreach (string extensao in validacaoLista)
                 if (extensao == extensaoArquivo)
@@ -26,12 +26,6 @@ namespace Galeria2804.Controllers
         }
         // GET: Imagems
         public async Task<IActionResult> Index()
-        {
-            return View(await _context.Imagens.ToListAsync());
-        }
-
-
-        public async Task<IActionResult> Galeria()
         {
             return View(await _context.Imagens.ToListAsync());
         }
@@ -45,7 +39,7 @@ namespace Galeria2804.Controllers
             }
 
             var imagem = await _context.Imagens
-                .FirstOrDefaultAsync(m => m.imagemId == id);
+                .FirstOrDefaultAsync(m => m.arquivoId == id);
             if (imagem == null)
             {
                 return NotFound();
@@ -65,17 +59,17 @@ namespace Galeria2804.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("imagemId,imagemName,imagemTam,imagemType,imagemDescricao")] Imagem imagem, IFormFile arquivo)
+        public async Task<IActionResult> Create([Bind("arquivoId,arquivoName,arquivoTam,arquivoType,arquivoDescricao")] Imagem imagem, IFormFile arquivo)
         {
             var fileName = arquivo.FileName;
             var fileTam = arquivo.Length;
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imgs/", fileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/arq/", fileName);
 
-            if (imagem.imagemDescricao != null)
+            if (imagem.arquivoDescricao != null)
             {
-                imagem.imagemName = fileName;
-                imagem.imagemTam = (int)fileTam;
-                imagem.imagemType = VerificaExtensao(fileName);
+                imagem.arquivoName = fileName;
+                imagem.arquivoTam = (int)fileTam;
+                imagem.arquivoType = VerificaExtensao(fileName);
 
                 using (var localFile = System.IO.File.OpenWrite(filePath))
                 using (var uploadedFile = arquivo.OpenReadStream())
@@ -111,18 +105,18 @@ namespace Galeria2804.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("imagemId,imagemName,imagemTam,imagemType,imagemDescricao")] Imagem imagem, IFormFile arquivo)
+        public async Task<IActionResult> Edit(int id, [Bind("arquivoId,arquivoName,arquivoTam,arquivoType,arquivoDescricao")] Imagem imagem, IFormFile arquivo)
         {
             if (arquivo != null)
             {
                 var dataImagemAntes = await _context.Imagens.FindAsync(id);
-                var nomeArquivoAntes = dataImagemAntes.imagemName;
+                var nomeArquivoAntes = dataImagemAntes.arquivoName;
 
                 var nomeArquivoAtual = arquivo.FileName;
 
                 if (nomeArquivoAtual != nomeArquivoAntes)
                 {
-                    var nomeArquivoAtual_comURL = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imgs/", nomeArquivoAtual);
+                    var nomeArquivoAtual_comURL = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/arq/", nomeArquivoAtual);
                     System.IO.File.Delete(nomeArquivoAtual_comURL);
 
                     using (var localFile = System.IO.File.OpenWrite(nomeArquivoAtual_comURL))
@@ -131,10 +125,10 @@ namespace Galeria2804.Controllers
                         uploadedFile.CopyTo(localFile);
                     }
 
-                    dataImagemAntes.imagemName = nomeArquivoAtual;
-                    dataImagemAntes.imagemTam = (int)arquivo.Length;
-                    dataImagemAntes.imagemType = VerificaExtensao(nomeArquivoAtual);
-                    dataImagemAntes.imagemDescricao = imagem.imagemDescricao;
+                    dataImagemAntes.arquivoName = nomeArquivoAtual;
+                    dataImagemAntes.arquivoTam = (int)arquivo.Length;
+                    dataImagemAntes.arquivoType = VerificaExtensao(nomeArquivoAtual);
+                    dataImagemAntes.arquivoDescricao = imagem.arquivoDescricao;
                 }
 
                 _context.Update(dataImagemAntes);
@@ -154,7 +148,7 @@ namespace Galeria2804.Controllers
             }
 
             var imagem = await _context.Imagens
-                .FirstOrDefaultAsync(m => m.imagemId == id);
+                .FirstOrDefaultAsync(m => m.arquivoId == id);
             if (imagem == null)
             {
                 return NotFound();
@@ -169,7 +163,7 @@ namespace Galeria2804.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var imagem = await _context.Imagens.FindAsync(id);
-            var stringEndereco = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imgs/", imagem.imagemName);
+            var stringEndereco = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/arq/", imagem.arquivoName);
 
             if (!System.IO.File.Exists(stringEndereco))
                 return RedirectToAction(nameof(Index));
@@ -183,7 +177,7 @@ namespace Galeria2804.Controllers
 
         private bool ImagemExists(int id)
         {
-            return _context.Imagens.Any(e => e.imagemId == id);
+            return _context.Imagens.Any(e => e.arquivoId == id);
         }
     }
 }

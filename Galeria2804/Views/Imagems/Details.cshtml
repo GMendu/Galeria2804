@@ -7,36 +7,36 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Imagem</h4>
+    <h4>Arquivo</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.imagemName)
+            @Html.DisplayNameFor(model => model.arquivoName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagemName)
+            @Html.DisplayFor(model => model.arquivoName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.imagemTam)
+            @Html.DisplayNameFor(model => model.arquivoTam)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagemTam)
+            @Html.DisplayFor(model => model.arquivoTam)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.imagemType)
+            @Html.DisplayNameFor(model => model.arquivoType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagemType)
+            @Html.DisplayFor(model => model.arquivoType)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.imagemDescricao)
+            @Html.DisplayNameFor(model => model.arquivoDescricao)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagemDescricao)
+            @Html.DisplayFor(model => model.arquivoDescricao)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.imagemId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.arquivoId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

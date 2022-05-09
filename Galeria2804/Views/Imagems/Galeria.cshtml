@@ -14,7 +14,7 @@
                 Imagem
             </th>
             <th>
-                Tamanho da imagem
+                Tamanho do Arquivo
             </th>
             <th>
                 Tipo do arquivo
@@ -29,20 +29,20 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <img src="~/imgs/@item.imagemName width="100px" />
+                <img src="~/arq/@item.arquivoName" style="width=100px" />
             </td>
             <td>
                     @{
-                        int tamanho = (int)(item.imagemTam / 1000);
+                        int tamanho = (int)(item.arquivoTam / 1000);
                         string exibir = tamanho.ToString() + " kB";
                     }
                     @exibir
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.imagemType)
+                @Html.DisplayFor(modelItem => item.arquivoType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.imagemDescricao)
+                @Html.DisplayFor(modelItem => item.arquivoDescricao)
             </td>
             
         </tr>

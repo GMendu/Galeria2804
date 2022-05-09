@@ -15,14 +15,14 @@
             Imagem Armazenada
         </dt>
         <dd class = "col-sm-10">
-            <img src="~/imgs/@Model.imagemName" width="100%"><br />
+            <img src="~/imgs/@Model.arquivoName" width="100%"><br />
         </dd>
         <dt class = "col-sm-2">
             Tamanho do arquivo
         </dt>
         <dd class = "col-sm-10">
             @{
-                int tamanho = (int)(Model.imagemTam / 1000);
+                int tamanho = (int)(Model.arquivoTam / 1000);
                 string exibir = tamanho.ToString() + "kB";
             }
             @exibir
@@ -31,19 +31,19 @@
             Extensão do arquivo (formato do arquivo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagemType)
+            @Html.DisplayFor(model => model.arquivoType)
         </dd>
         <dt class = "col-sm-2">
             Descrição
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagemDescricao)
+            @Html.DisplayFor(model => model.arquivoDescricao)
         </dd>
     </dl>
     
 
     <form asp-action="Delete">
-        <input type="hidden" asp-for="imagemId" />
+        <input type="hidden" asp-for="arquivoId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

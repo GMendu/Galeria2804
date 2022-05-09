@@ -5,13 +5,13 @@ namespace Galeria2804.Models
     public class Imagem
     {
         [Key]
-        public int imagemId { get; set; }
+        public int arquivoId { get; set; }
         [Required]
-        public string imagemName { get; set; }
+        public string arquivoName { get; set; }
         [Required]
-        public int imagemTam { get; set; }
+        public int arquivoTam { get; set; }
         [Required]
-        public string imagemType { get; set; }
-        public string imagemDescricao { get; set; }
+        public string arquivoType { get; set; }
+        public string arquivoDescricao { get; set; }
     }
 }
