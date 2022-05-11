@@ -14,4 +14,5 @@ namespace Galeria2804.Models
         public string arquivoType { get; set; }
         public string arquivoDescricao { get; set; }
     }
+
 }

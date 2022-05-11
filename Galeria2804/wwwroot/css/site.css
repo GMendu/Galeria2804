@@ -26,26 +26,38 @@ body {
     align-content: flex-start;
     width: 80vw;
     background-color: #2f1d58;
-    height: 80vh;
-    overflow: auto;
+    height: fit-content;
     flex-direction: row;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 
 .card {
     width: 340px;
     height: 240px;
-    margin: 5px;
-    background-color: lightblue;
+/*    background-color: lightblue;*/
 }
 
 .card-fundo {
-    background-color: aliceblue;
+/*    background-color: aliceblue;*/
     border-radius: 5px;
     padding: 5px;
     height: 300px;
 }
 
-.card-media {
+.media-title{
+    text-align: center;
+}
+
+.video {
+    max-width: 280px; 
+    max-height: 160px
+}
+.imagem {
+    max-width: 280px; 
+    max-height: 160px
+}
+.audio {
     max-width: 280px; 
     max-height: 160px
 }
