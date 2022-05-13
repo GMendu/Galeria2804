@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Galeria2804.Models.Imagem>
 
 @{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index";
 }
 
 <h1>GERENCIAR ARQUIVOS</h1>
 
 <p>
-	<a asp-action="Create">Inserir Imagem</a>
+    <a asp-action="Create">Inserir Imagem</a>
 </p>
 
 
@@ -17,74 +17,77 @@
 
 
 <div class="card-wrapper">
-	@foreach (var item in Model)
-	{
-		<div class="card">
-			<div class="card-fundo">
-				<span class="media-title">@Html.DisplayFor(modelItem => item.arquivoDescricao)</span>
-				<div class="media">
-					@switch (item.arquivoType)
-					{
-						case ".mp4":
+    @foreach (var item in Model)
+    {
+        <div class="cardzin">
+            <div class="card-fundo">
+                <span class="media-title">@Html.DisplayFor(modelItem => item.arquivoDescricao)</span>
+                <div class="media">
+                    @switch (item.arquivoType)
+                    {
+                        case ".mp4":
 
-							<video class="video" controls>
-								<source src="~/arq/@item.arquivoName" type="video/mp4">
-								Your browser does not support the video tag.
-							</video>
-							break;
+                            <video class="video" controls>
+                                <source src="~/arq/@item.arquivoName" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
 
-						case ".webm":
+                        case ".webm":
 
-							<video class="video" controls>
-								<source src="~/arq/@item.arquivoName" type="video/webm">
-								Your browser does not support the video tag.
-							</video>
-							break;
+                            <video class="video" controls>
+                                <source src="~/arq/@item.arquivoName" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
 
-						case ".ogg":
-							<video class="video" controls>
-								<source src="~/arq/@item.arquivoName" type="video/ogg">
-								Your browser does not support the video tag.
-							</video>
-							break;
+                        case ".ogg":
+                            <video class="video" controls>
+                                <source src="~/arq/@item.arquivoName" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
 
-						case ".mp3":
+                        case ".mp3":
 
-							<audio class="audio" controls>
-								<source src="~/arq/@item.arquivoName" type="audio/mpeg">
-								Your browser does not support the audio element.
-							</audio>
-							break;
+                            <audio class="audio" controls>
+                                <source src="~/arq/@item.arquivoName" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            break;
 
-						case ".wav":
+                        case ".wav":
 
-							<audio class="audio" controls>
-								<source src="~/arq/@item.arquivoName" type="audio/wav">
-								Your browser does not support the audio element.
-							</audio>
-							break;
+                            <audio class="audio" controls>
+                                <source src="~/arq/@item.arquivoName" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            break;
 
-						default:
-							<img class="imagem" src="~/arq/@item.arquivoName" />
-							break;
+                        default:
+                            <img class="imagem" src="~/arq/@item.arquivoName" />
+                            break;
 
-					}
-				</div>
-				@{
-					int tamanho = (int)(item.arquivoTam / 1000);
-					string exibir = tamanho.ToString() + " kB";
-				}
+                    }
+                </div>
+                @{
+                    int tamanho = (int)(item.arquivoTam / 1000);
+                    string exibir = tamanho.ToString() + " kB";
+                }
 
 
 
-				<div class="card-hovered">
-					<span>@exibir</span>
-					@Html.DisplayFor(modelItem => item.arquivoType)
-					<a asp-action="Edit" asp-route-id="@item.arquivoId">Edit</a> |
-					<a asp-action="Details" asp-route-id="@item.arquivoId">Details</a> |
-					<a asp-action="Delete" asp-route-id="@item.arquivoId">Delete</a>
-				</div>
-			</div>
-		</div>
-	}
+                <div class="card-info">
+                 
+                        <span>@exibir</span>
+                        <span>@Html.DisplayFor(modelItem => item.arquivoType)</span>
+                    
+                        <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.arquivoId">Edit</a>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.arquivoId">Details</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.arquivoId">Delete</a>
+                    
+                </div>
+            </div>
+        </div>
+    }
 </div>

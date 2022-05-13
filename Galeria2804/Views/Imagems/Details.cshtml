@@ -10,6 +10,54 @@
     <h4>Arquivo</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-12">
+              @switch (Model.arquivoType)
+                    {
+                        case ".mp4":
+
+                            <video class="video" controls>
+                                <source src="~/arq/@Model.arquivoName" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
+
+                        case ".webm":
+
+                            <video class="video" controls>
+                                <source src="~/arq/@Model.arquivoName" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
+
+                        case ".ogg":
+                            <video class="video" controls>
+                                <source src="~/arq/@Model.arquivoName" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
+
+                        case ".mp3":
+
+                            <audio class="audio" controls>
+                                <source src="~/arq/@Model.arquivoName" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            break;
+
+                        case ".wav":
+
+                            <audio class="audio" controls>
+                                <source src="~/arq/@Model.arquivoName" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            break;
+
+                        default:
+                            <img class="imagem" src="~/arq/@Model.arquivoName" />
+                            break;
+
+                    }
+        </dt>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.arquivoName)
         </dt>

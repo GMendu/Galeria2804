@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="arquivoId" />
             <input type="hidden" asp-for="arquivoTam" />
@@ -18,15 +18,60 @@
             <input type="hidden" asp-for="arquivoName" />
             <div>
                 <span>Imagem armazenada</span>
-                <img src="~/arq/@Model.arquivoName" width="100%"/><br />
-                <input type="file" name="arquivo" class="form-control" value="~/arq/@Model.arquivoName" />
+                @switch (Model.arquivoType)
+                {
+                    case ".mp4":
+
+                        <video class="video" controls>
+                            <source src="~/arq/@Model.arquivoName" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        break;
+
+                    case ".webm":
+
+                        <video class="video" controls>
+                            <source src="~/arq/@Model.arquivoName" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                        break;
+
+                    case ".ogg":
+                        <video class="video" controls>
+                            <source src="~/arq/@Model.arquivoName" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                        break;
+
+                    case ".mp3":
+
+                        <audio class="audio" controls>
+                            <source src="~/arq/@Model.arquivoName" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        break;
+
+                    case ".wav":
+
+                        <audio class="audio" controls>
+                            <source src="~/arq/@Model.arquivoName" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        break;
+
+                    default:
+                        <img class="imagem" src="~/arq/@Model.arquivoName" />
+                        break;
+
+                }
             </div>
+            <input type="file" name="arquivo" class="form-control" value="~/arq/@Model.arquivoName" />
+            <input asp-for="arquivoDescricao" class="form-control" />
+            <span asp-validation-for="arquivoDescricao" class="text-danger"></span>
+
+
             <div class="form-group">
-                <input asp-for="arquivoDescricao" class="form-control" />
-                <span asp-validation-for="arquivoDescricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Edit" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -37,5 +82,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

@@ -85,20 +85,20 @@ namespace Galeria2804.Controllers
         }
 
         // GET: Imagems/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var imagem = await _context.Imagens.FindAsync(id);
-        //    if (imagem == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(imagem);
-        //}
+            var imagem = await _context.Imagens.FindAsync(id);
+            if (imagem == null)
+            {
+                return NotFound();
+            }
+            return View(imagem);
+        }
 
         // POST: Imagems/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
